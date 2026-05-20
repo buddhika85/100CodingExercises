@@ -41,4 +41,20 @@ public class Exercises
             .ToList();
     }
     
+    public static TimeSpan CalculateTotalBreakTime(
+                List<(DateTime Start, DateTime End)> breaks)
+    {
+        return breaks.Aggregate(TimeSpan.Zero, (current, value) => current + (value.End - value.Start));
+    }
+    
+}
+
+public class Player
+{
+    public Statistics? Statistics { get; set; }
+}
+
+public class Statistics
+{
+    public int? HighestScore { get; set; }
 }
