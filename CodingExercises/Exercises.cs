@@ -47,6 +47,20 @@ public class Exercises
         return breaks.Aggregate(TimeSpan.Zero, (current, value) => current + (value.End - value.Start));
     }
     
+    public static void UpdateHighestScore(
+        Player? player, int newScore)
+    {
+        if (player?.Statistics is null) return;
+        // if (player.Statistics.HighestScore == null)
+        // {
+        //     player.Statistics.HighestScore = newScore;
+        //     return;
+        // }
+        player.Statistics.HighestScore ??= newScore;
+        
+        player.Statistics.HighestScore = player.Statistics.HighestScore < newScore ? newScore : player.Statistics.HighestScore;
+        
+    }
 }
 
 public class Player
